@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        background-color: skyblue;
+        overflow: hidden;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 70px;
+    }
+</style>
+
+<body>
+    <div class='box'>
+        <h1></h1>
+    </div>
+    <script>
+        let res = 0
+        var box = document.getElementsByClassName('box')[0]
+        var span = document.getElementsByTagName('h1')[0]
+        box.addEventListener('mousemove', debounce(foo, 300, false))
+        function foo() {
+            span.innerHTML = res++
+        }
+        function debounce(func, wait, cur) {
+            let existTimeout
+            return function () {
+                let that = this
+                let args = arguments
+                // console.log(wait, cur);
+                if (existTimeout) {
+                    clearTimeout(existTimeout)
+                }
+                if (cur === true) {
+                    let curse = !existTimeout
+                    existTimeout = setTimeout(() => {
+                        existTimeout = undefined
+                    }, wait)
+                    if (curse) {
+                        func.apply(that, args)
+                    }
+                } else if (cur === false) {
+                    existTimeout = setTimeout(() => {
+                        func.apply(that, args)
+                    }, wait)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

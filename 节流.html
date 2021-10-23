@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+        background-color: skyblue;
+        overflow: hidden;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 70px;
+    }
+</style>
+
+<body>
+    <div class='box'>
+        <h1></h1>
+    </div>
+    <script>
+        let res = 0
+        var box = document.getElementsByClassName('box')[0]
+        var span = document.getElementsByTagName('h1')[0]
+        box.addEventListener('mousemove', throttle(foo, 1000, false))
+        function foo() {
+            span.innerHTML = res++
+        }
+        // 时间戳
+        // function throttle(func, wait) {
+        //     let old = 0
+        //     return function () {
+        //         let that = this
+        //         let args = arguments
+        //         let now = new Date().valueOf()
+        //         if (now - old > wait) {
+        //             func.apply(that, args)
+        //             old = now
+        //         }
+        //     }
+        // }
+        // 定时器
+        function throttle(func, wait) {
+            let timeout
+            return function () {
+                let that = this
+                let args = arguments
+                if (!timeout) {
+                    timeout = setTimeout(() => {
+                        timeout = undefined
+                        func.apply(that, args)
+                    }, wait)
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

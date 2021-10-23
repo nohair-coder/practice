@@ -1,0 +1,30 @@
+block元素
+    1、如果没有设置宽度会自动填满父容器
+    2、可以应用margin/padding
+    3、如果没有设置高度会拓展高度，包含常规流子元素
+    4、处于常规流前后元素独占水平空间
+    5、忽略vertical-align
+
+inline元素
+    1、水平方向从左到右依次布局
+    2、margin/padding 在垂直方向无效，在水平方向有效
+    3、不会再元素前后换行
+    4、浮动或绝对定位自动转换成 block
+    5、vertical-align属性无效
+    6、元素宽度由元素内容决定
+
+inline-block 元素
+    1、可以设置宽高
+    2、其他基本同 inline元素属性
+ 
+
+有哪些方法可以隐藏元素？
+    1、display:none;
+    2、visibility: hidden;
+    3、opacity: 0;   // 透明度
+
+
+简述document.write和innerHTML的区别
+    1、document.write会重绘整个页面，而innerHTML可以指定重绘页面中的指定dom元素的一部分。
+    2、document.write是直接写入到页面的内容流中的，如果在写之前没有显示调用document.open方法，
+        浏览器会自动调用document.open方法来打开内容流，每次写完关闭之后重新调用该函数来打开内容流时，会导致页面被重写。

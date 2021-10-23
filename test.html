@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button class="btn">增加</button>
+    <button class="dec">减少</button>
+    <ui class="ul">
+        <li>1</li>
+    </ui>
+    <script>
+        window.onload = function () {
+            let len = document.getElementsByTagName('li').length
+            let btn = document.getElementsByClassName('btn')[0]
+            let ul = document.getElementsByClassName('ul')[0]
+            let dec = document.getElementsByClassName('dec')[0]
+            btn.addEventListener('click', function () {
+                console.log(123);
+                len += 1
+                let newLi = document.createElement('li')
+                newLi.innerHTML = len
+                ul.appendChild(newLi)
+            })
+            dec.addEventListener('click', function () {
+                if (ul.lastChild) {
+                    len -= 1
+                    let last = ul.lastChild
+                    ul.removeChild(last)
+                }
+            })
+            ul.addEventListener('mouseover', function (evevt) {
+                let target = evevt.target
+                target.style.color = 'red'
+            })
+            ul.addEventListener('mouseout', function (evevt) {
+                let target = evevt.target
+                target.style.color = 'black'
+            })
+        }
+    </script>
+</body>
+
+</html>
